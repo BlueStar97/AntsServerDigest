@@ -6,7 +6,7 @@ import java.net.Socket;
 
 public class AntsServerDigest 
 {
-    public static void main(String[] args) throws ClassNotFoundException 
+    public static void main(String[] args) throws ClassNotFoundException, IOException 
     {
         ServerSocket sconn=null;
         Socket conn=null;
@@ -14,12 +14,12 @@ public class AntsServerDigest
         Thread thread;
         
         int port=3356;
+        sconn=new ServerSocket(port);
         
         while(true)
         {
             try
             {
-                sconn=new ServerSocket(port);
                 conn=sconn.accept();
                 now=new gestore(conn);
                 thread=new Thread(now);
